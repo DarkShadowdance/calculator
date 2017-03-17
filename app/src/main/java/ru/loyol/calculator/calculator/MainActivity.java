@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
             if (menu.size() < maxCount) {
                 index += 1;
                 logger
-                        .log(
-                            String.valueOf(menu.size()), "/", String.valueOf(maxCount)
-                            , " >> ", String.valueOf(index), " :: ", pattern.getName())
-                        .write('i');
+                    .log(
+                        String.valueOf(menu.size()), "/", String.valueOf(maxCount)
+                        , " >> ", String.valueOf(index), " :: ", pattern.getName())
+                    .write('i');
                 menu.add(Menu.NONE, index, Menu.NONE, pattern.getName());
             }
         }

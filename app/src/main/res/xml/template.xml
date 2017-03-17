@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templateList>
     <template priority="1" name="DEFAULT"><buttons/></template>
+    <template priority="2" name="NEW"><buttons/></template>
 </templateList>

@@ -2,6 +2,8 @@ package ru.loyol.calculator.calculator;
 
 import android.util.Log;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Created by Andrew on 17.03.2017.
  */
@@ -12,7 +14,7 @@ public class Logger {
     private boolean debug = false;
     public String currentMessage;
 
-    public static Logger init(String value){
+    public static Logger init(@NotNull String value){
         if (tag != value) tag = value;
         return LOGGER;
     };

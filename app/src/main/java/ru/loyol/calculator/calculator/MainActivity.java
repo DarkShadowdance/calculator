@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,22 +19,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private List<Pattern> patterns;
 
-    public void ButtonOneClick(View view){
-        mTextMessage.setText("1");
+    public void ButtonOnClick(View view){
+        Button button = (Button) view;
+        mTextMessage.setText(button.getText());
     }
-
-    public void ButtonTwoClick(View view){
-        mTextMessage.setText("2");
-    }
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            mTextMessage.setText(item.getTitle());
-            return true;
+        mTextMessage.setText(item.getTitle());
+        return true;
         }
 
     };

@@ -3,6 +3,8 @@ package ru.loyol.calculator.calculator;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+
+import org.jetbrains.annotations.NotNull;
 import org.xmlpull.v1.XmlPullParser;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +15,23 @@ import java.util.List;
  */
 
 public class CalculatorInitializer {
-    public static List<Pattern> load(Activity activity) {
+    public static List<Pattern> load(@NotNull Activity activity) {
         Logger logger = Logger.init("MyActivity");
+
+        String name;
+        Integer priority;
+
         List<Pattern> patterns = new ArrayList<>();
         Resources resources = activity.getResources();
         XmlResourceParser xmlParser = resources.getXml(R.xml.template);
-        try {
 
+        try {
             int index = xmlParser.next();
             while (index != XmlPullParser.END_DOCUMENT) {
                 if (index==XmlPullParser.START_TAG && xmlParser.getName().contentEquals("template")){
                     logger.log(xmlParser.getName(), "::", String.valueOf(xmlParser.getAttributeCount())).write('i');
-                    String name = new String();
-                    Integer priority = null;
+                    name = new String();
+                    priority = null;
                     for (int i = 0; i < xmlParser.getAttributeCount(); i++) {
                         switch (xmlParser.getAttributeName(i))
                         {

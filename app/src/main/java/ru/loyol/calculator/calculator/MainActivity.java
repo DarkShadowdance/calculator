@@ -4,14 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = "MyActivity";
     private TextView mTextMessage;
+    private Pattern pattern;
 
     public void ButtonOneClick(View view){
         mTextMessage.setText("1");
@@ -27,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Log.i(TAG, "OnNavigationItemSelectedListener");
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
@@ -51,10 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        Log.i(TAG, "Here");
+        if (pattern == null) {
+            Log.i(TAG, "try");
+            pattern = CalculatorInitializer.load(this);
+            Log.i(TAG, pattern.getName());
+        }
         onPrepareOptionsMenu(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

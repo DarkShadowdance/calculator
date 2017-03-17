@@ -9,7 +9,25 @@ import java.util.List;
  */
 
 public class Pattern {
-    String name;
-    Integer priority;
-    List<ButtonSet> buttons;
+    private String name;
+    private Integer priority;
+    private List<ButtonSet> buttons;
+
+    public Pattern(String name, Integer priority, List<ButtonSet> buttons) {
+        this.name = name;
+        this.priority = priority;
+        this.buttons = buttons;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public List<ButtonSet> getButtons() {
+        return buttons;
+    }
 }
